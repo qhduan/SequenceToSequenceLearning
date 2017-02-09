@@ -10,13 +10,17 @@ Sequence to Sequence学习最早由Bengio在2014年的[论文](https://arxiv.org
 而RNN Encoder-Decoder结构就是编码器与解码器都是使用RNN算法，一般为LSTM。
 LSTM的优势在于处理序列，它可以将上文包含的信息保存在隐藏状态中，这样就提高了算法对于上下文的理解能力。
 
+Encoder与Decoder各自可以算是单独的模型，一般是一层或多层的LSTM。
+
 ## LSTM
 
 LSTM是Long-short Term Memory的缩写，是RNN算法中的一种。
 它很好的抑制了原始RNN算法中的梯度消失弥散（Vanishing Gradient）问题。
 
 一个LSTM神经元（Cell）可以接收两个信息，其中一个是序列的某一位输入，另一个是上一轮的隐藏状态。
-假设我们输入序列长度为2，输出序列长度也为2，流程如下：
+而一个LSTM神经元也会产生两个信息，一个是当前轮的输出，另一个是当前轮的隐藏状态。
+
+假设我们输入序列长度为`2`，输出序列长度也为`2`，流程如下：
 
 ![LSTM.png](LSTM.png)
 
@@ -28,7 +32,7 @@ LSTM是Long-short Term Memory的缩写，是RNN算法中的一种。
 
 ![S2S翻译.png](S2S翻译.png)
 
-上图中，LSTM Encoder是一个LSTM神经元，Decoder是另一个，Encoder自身运行了 3 次，Decoder运行了4次。
+上图中，LSTM Encoder是一个LSTM神经元，Decoder是另一个，Encoder自身运行了`3`次，Decoder运行了`4`次。
 
 可以看出，Encoder的输出会被抛弃，我们只需要保留隐藏状态（即图中EN状态）作为下一次ENCODER的状态输入。
 Encoder的最后一轮输出状态会与Decoder的输入组合在一起，共同作为Decoder的输入。
