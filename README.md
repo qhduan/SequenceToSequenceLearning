@@ -24,7 +24,7 @@ LSTM是Long-short Term Memory的缩写，是RNN算法中的一种。
 
 ## 从序列，到序列
 
-以机器翻译为例，假设我们要将“How are you”翻译为“你好吗”，模型要做的事情如下图：
+以机器翻译为例，假设我们要将`How are you`翻译为`你好吗`，模型要做的事情如下图：
 
 ![S2S翻译.png](S2S翻译.png)
 
